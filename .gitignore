@@ -3,3 +3,8 @@
 !README.md
 !.gitignore
 
+# from example in `man gitignore`
+!/shell/
+/shell/*
+!/shell/git/
+
