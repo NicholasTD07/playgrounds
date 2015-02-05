@@ -4,4 +4,6 @@
 !.gitignore
 
 !/rails/
+/rails/*
+!/rails/blog/
 
