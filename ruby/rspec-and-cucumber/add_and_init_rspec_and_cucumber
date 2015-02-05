@@ -1,0 +1,11 @@
+#!/bin/bash
+
+./add_gems $* rspec cucumber
+
+bundle install
+
+rspec --init
+
+mkdir -p features/step_definitions/
+
+

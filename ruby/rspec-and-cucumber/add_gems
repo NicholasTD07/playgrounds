@@ -1,0 +1,71 @@
+#!/bin/bash
+
+set -e
+
+main() {
+    if [[ -z $* ]]; then
+        usage
+        exit 0
+    fi
+
+    if [[ $1 == -c ]];then
+        clean_gemfile=1
+        shift
+    fi
+
+    add_gems $*
+}
+
+usage() {
+    name=`basename $0`
+    echo "usage: $name [-c] gem_1 gem_2 ..."
+    echo
+    echo "With -c, $name will remove current Gemfile and create a new one."
+}
+
+add_gems() {
+    if [ $clean_gemfile ];then
+        rm_file_if_exists Gemfile
+        bundle init
+    fi
+
+    if [[ -z $* ]];then
+        echo "No gems to add."
+        exit
+    fi
+
+    remove_lines_containing_pattern_in_file "sample" Gemfile
+    remove_lines_containing_pattern_in_file "rails" Gemfile
+
+    add_gems_to_file Gemfile $*
+}
+
+rm_file_if_exists() {
+    if [[ -f $1 ]]; then
+        rm $1
+        log "Removed" $1
+    fi
+}
+
+remove_lines_containing_pattern_in_file() {
+    sed -i '' "/$1/d" $2 # no backup, -i ''
+    log "Removed lines containing $1 in $2"
+}
+
+add_gems_to_file() {
+    file=$1
+    shift
+
+    for gem in $*; do
+        echo "gem '$gem'" >> $file
+    done
+
+    log "Added $* into Gemfile."
+}
+
+log() {
+    echo "[`basename $0`]" $*
+}
+
+main $*
+
