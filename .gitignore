@@ -4,4 +4,6 @@
 !.gitignore
 
 !/ruby/
+/ruby/*
+!/ruby/rspec-and-cucumber/
 
