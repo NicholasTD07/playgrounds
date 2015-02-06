@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 local_branches() {
     git for-each-ref refs/heads --format='%(refname:short)'
 }
@@ -21,5 +23,23 @@ contains_commit() {
     git merge-base --is-ancestor $commit $subject
 }
 
+branches_does_not_contains_commit() {
+    local commit=$1
+    shift
+
+    local branches=$*
+    local branch_does_not_contains_commit=()
+
+    for branch in $branches; do
+        if contains_commit $branch $commit
+        then
+            echo $branch "contains" $commit
+        else
+            echo $branch
+            branch_does_not_contains_commit+=("$branch")
+        fi
+    done
 }
+
+branches_does_not_contains_commit shell-git `local_branches`
 
