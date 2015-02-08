@@ -17,6 +17,7 @@ for branch in local_braches
     `git checkout #{branch}`
     `git merge master`
     exit unless $?.success?
+    p "Merged #{branch} with master"
   end
 end
 
