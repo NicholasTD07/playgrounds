@@ -3,11 +3,16 @@
 This is the central repository where I learn/try new stuff. It could be a new
 language, a new framework, or a new practice, etc.
 
-# todo
+# todo/done
 
+- [ ] Git
+    - [x] "Merge with master if you haven't" - [shell-git] git.rb
+    - [ ] "For branches, do this"
+        - [ ] "For branches that match a pattern, do this"
 - [ ] Ruby
     - [ ] [Functional Core, Imperative Shell] [functional-core]
     - [ ] Rails
+        - [x] Basics
 - [ ] Cocoa
     - [ ] SDKs
     - [ ] Swift
