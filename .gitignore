@@ -3,3 +3,15 @@
 !README.md
 !.gitignore
 
+!/ruby/
+/ruby/*
+!/ruby/rspec-and-cucumber/
+!/rails/
+/rails/*
+!/rails/blog/
+!/haskell/
+# from example in `man gitignore`
+!/shell/
+/shell/*
+!/shell/git/
+
