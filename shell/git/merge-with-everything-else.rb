@@ -10,7 +10,7 @@ def main
 
   merged_branches = []
   for branch in other_branches
-    `git merge #{branch}`
+    `git merge #{branch} --squash`
     unless $?.success?
       failed_when_merging branch
       merged_with merged_branches
