@@ -3,3 +3,6 @@
 !README.md
 !.gitignore
 
+!/ruby/
+/ruby/*
+!/ruby/ruby-warrior/
