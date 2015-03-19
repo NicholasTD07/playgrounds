@@ -8,9 +8,9 @@ describe User do
     let(:alice) { FactoryGirl.create(:user) }
 
     it 'has people added to its relationships' do
-      bob.relationships << Relationship.new(name: 'friends',
-                                        user_id: bob.id,
-                                        other_user_id: alice.id)
+      bob.relationships.create!(name: 'friends',
+                            user_id: bob.id,
+                            other_user_id: alice.id)
 
       expect(bob.related_people).to include alice
     end
@@ -22,9 +22,9 @@ describe User do
 
     it 'does change users updated_at' do
       expect do
-        bob.relationships << Relationship.new(name: 'friends',
-                                              user_id: bob.id,
-                                              other_user_id: alice.id)
+        bob.relationships.create!(name: 'friends',
+                                  user_id: bob.id,
+                                  other_user_id: alice.id)
       end.to change { bob.updated_at }
 
     end
