@@ -3,3 +3,8 @@
 !README.md
 !.gitignore
 
+!/ruby/
+/ruby/*
+!/ruby/rails/
+/ruby/rails/*
+!/ruby/rails/touch-active-record/
