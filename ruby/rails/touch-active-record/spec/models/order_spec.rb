@@ -1,12 +1,12 @@
 require 'rails_helper'
 
 describe Order do
-  let!(:customer) { Customer.create! }
+  let!(:customer) { BigCustomer.create! }
   let!(:order) { customer.orders.create! }
 
   it { expect(customer.orders).to include order }
 
-  context 'should touch associated Customer' do
+  context 'should touch associated object' do
     it 'when being created' do
       expect { customer.orders.create! }.to change { customer.updated_at }
     end
@@ -24,6 +24,11 @@ describe Order do
 
     it 'when being touched' do
       expect { order.touch }.to change { customer.updated_at }
+    end
+
+    it 'when being touched' do
+      expect(order.customer).to receive(:touch)
+      order.touch
     end
   end
 end
