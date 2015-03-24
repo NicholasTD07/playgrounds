@@ -49,27 +49,30 @@ def wrong_email(email)
   git_user_email != email
 end
 
-def git_user_name
-  `git config user.name`.strip
-end
+class Git
+  attr_accessor :user_name, :user_email
+  def user_name
+    `git config user.name`.strip
+  end
 
-def git_user_email
-  `git config user.email`.strip
-end
+  def user_email
+    `git config user.email`.strip
+  end
 
-def set_git_user_for_work(user)
-  set_git_user_name_for_work user.name
-  set_git_user_email_for_work user.email
-end
+  def set_user_as(user)
+    user_name = user.name
+    user_email = user.email
+  end
 
-def set_git_user_name_for_work(name)
-  debug "set user name to: " + name
-  `git config user.name "#{name}"`
-end
+  def user_name=(name)
+    debug "set user name to: " + name
+    `git config user.name "#{name}"`
+  end
 
-def set_git_user_email_for_work(email)
-  debug "set user email to: " + email
-  `git config user.email "#{email}"`
+  def user_email=(email)
+    debug "set user email to: " + email
+    `git config user.email "#{email}"`
+  end
 end
 
 def debug(*args)
