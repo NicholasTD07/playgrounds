@@ -3,3 +3,8 @@
 !README.md
 !.gitignore
 
+!/python/
+/python/*
+!/python/django/
+/python/django/*
+!/python/django/tutorial/
