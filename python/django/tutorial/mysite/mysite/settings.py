@@ -47,6 +47,8 @@ THIRD_PARTY_APPS = (
         'django_extensions',
 )
 
+SHELL_PLUS = 'ipython'
+
 INSTALLED_APPS = DJANGO_APPS + MY_APPS + THIRD_PARTY_APPS
 
 MIDDLEWARE_CLASSES = (
