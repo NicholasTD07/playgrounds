@@ -38,10 +38,16 @@ DJANGO_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
 )
+
 MY_APPS = (
     'polls', # when only one item, `,` is a must
 )
-INSTALLED_APPS = DJANGO_APPS + MY_APPS
+
+THIRD_PARTY_APPS = (
+        'django_extensions',
+)
+
+INSTALLED_APPS = DJANGO_APPS + MY_APPS + THIRD_PARTY_APPS
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
