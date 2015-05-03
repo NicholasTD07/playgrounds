@@ -6,4 +6,4 @@
 # common pattern for python
 !/python/
 /python/*
-!/python/
+!/python/py_git/
