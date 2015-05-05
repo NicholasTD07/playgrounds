@@ -44,3 +44,8 @@ def test_set_git_user_name(git, git_test_user_name):
     user_name = '_'.join(git_test_user_name)
     git.user_name = user_name
     assert git.user_name == user_name
+
+def test_set_git_user_name_with_spaces(git, git_test_user_name):
+    user_name = ' '.join(git_test_user_name)
+    git.user_name = user_name
+    assert git.user_name == user_name
