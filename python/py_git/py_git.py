@@ -12,7 +12,7 @@ class Profile:
 class Git:
     def _run_shell_command(func) -> str:
         def wrapper(*args, **kwargs):
-            args = func(*args, **kwargs).split()
+            args = func(*args, **kwargs)
             _debug('args: {}'.format(args))
             return _check_output(args).decode().strip()
         return wrapper
@@ -20,9 +20,12 @@ class Git:
     @property
     @_run_shell_command
     def user_name(self):
-        return 'git config user.name'
+        return 'git config user.name'.split()
 
     @user_name.setter
     @_run_shell_command
     def user_name(self, name: str):
-        return 'git config user.name {}'.format(name)
+        args = 'git config user.name'.split()
+        args.append(name)
+        return args
+        # todo: anything more elegant than this?
