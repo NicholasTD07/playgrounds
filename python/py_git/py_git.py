@@ -1,6 +1,5 @@
 from subprocess import check_output as _check_output
 
-
 def _debug(logging): pass
 
 
@@ -27,13 +26,3 @@ class Git:
     @_run_shell_command
     def user_name(self, name: str):
         return 'git config user.name {}'.format(name)
-
-
-if __name__ == '__main__':
-    git = Git()
-    print('user name: {}'.format(git.user_name))
-    user_name = git.user_name
-    git.user_name = 'tada'
-    print('user name: {}'.format(git.user_name))
-    git.user_name = user_name
-    print('changed user name back to: {}'.format(git.user_name))
