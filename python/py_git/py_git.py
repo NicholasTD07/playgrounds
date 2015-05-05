@@ -11,6 +11,10 @@ class Profile:
 
 class Git:
     def _run_shell_command(func) -> str:
+        # todo:
+        #  waiting for pep 484
+        #    i would like to write parameters as
+        #    `func: Callable[..., list]`
         def wrapper(*args, **kwargs):
             args = func(*args, **kwargs)
             _debug('args: {}'.format(args))
@@ -19,12 +23,12 @@ class Git:
 
     @property
     @_run_shell_command
-    def user_name(self):
+    def user_name(self) -> list:
         return 'git config user.name'.split()
 
     @user_name.setter
     @_run_shell_command
-    def user_name(self, name: str):
+    def user_name(self, name: str) -> list:
         args = 'git config user.name'.split()
         args.append(name)
         return args
